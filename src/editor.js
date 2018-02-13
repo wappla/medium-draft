@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import {
-  Editor,
   EditorState,
   RichUtils,
   SelectionState,
@@ -9,6 +8,7 @@ import {
   genKey,
   Modifier,
 } from 'draft-js';
+import Editor from 'draft-js-plugins-editor';
 import isSoftNewlineEvent from 'draft-js/lib/isSoftNewlineEvent';
 import { OrderedMap } from 'immutable';
 
@@ -89,6 +89,7 @@ class MediumDraftEditor extends React.Component {
     showLinkEditToolbar: PropTypes.bool,
     toolbarConfig: PropTypes.object,
     processURL: PropTypes.func,
+    plugins: PropTypes.array,
   };
 
   static defaultProps = {
@@ -121,6 +122,7 @@ class MediumDraftEditor extends React.Component {
     disableToolbar: false,
     showLinkEditToolbar: true,
     toolbarConfig: {},
+    plugins: [],
   };
 
   constructor(props) {
